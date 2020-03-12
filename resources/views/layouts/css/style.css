@@ -1,0 +1,58 @@
+.img-1{
+    background: url('../img/fisio.jpg') no-repeat;
+    background-size: cover;
+    min-height: 80vh;
+}
+
+.paralax{
+    background-attachment: fixed;
+}
+
+.container-centered{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn-big{
+    padding: 12px 100px;
+    border-radius: 3em;
+}
+
+.much-rounded{
+    border-radius: 3em!important;
+}
+
+@keyframes girar
+{
+    0%{
+        transform: rotate(0deg);
+    }
+
+    50%{
+        transform: rotate(10deg);
+    }
+
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+.girar:hover{
+    animation: girar 1s;
+}
+
+#contact-bar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+@media (max-width: 750px) {
+    #contact-bar{
+        font-size: 0.8em !important;
+        justify-content: center !important;
+    }
+}

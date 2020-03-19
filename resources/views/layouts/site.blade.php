@@ -7,20 +7,24 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     
+    <link rel="icon" href="{{ asset('img/iconelogo.png') }}">
+    
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body class="bg-light">
     <header class="w-100">
         <div class="w-100 bg-secondary p-2 d-flex justify-content-end text-white">
-            <div class="d-flex">
+            <div id="contact-bar">
                 <span class="mr-2"><div class="material-icons float-left">phone</div> 55 85 - 8888-8888 |</span>
                 <span class="mr-2"><div class="material-icons float-left">place</div> av br pois é |</span>
                 <span class="mr-2"><div class="material-icons float-left">mail</div> CentroMedico@gmail.com</span>
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-sm navbar-dark bg-info py-4">
-            <a class="navbar-brand" href="#">Consultorio</a>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-info py-0">
+            <a class="navbar-brand py-3 ml-3" href="#">
+                <img src="{{asset('img/logofinal.png')}}" alt="" class="p-0 float-left" style="height: 60px;">
+            </a>
             
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#nav">
                 <span class="navbar-toggler-icon"></span>
@@ -28,7 +32,7 @@
     
             <div class="collapse navbar-collapse" id="nav">
                 <ul class="navbar-nav ml-auto mr-3">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{route('/')}}">Home</a>
                     </li>
 
@@ -37,11 +41,11 @@
                     </li>
     
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('sobre')}}">Sobre Nós</a>
+                        <a class="nav-link" href="{{route('site.sobre')}}">Sobre Nós</a>
                     </li>
     
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('contatos')}}">Contatos</a>
+                        <a class="nav-link" href="{{route('site.contatos')}}">Contatos</a>
                     </li>
     
                     <li class="nav-item dropleft drop-left">

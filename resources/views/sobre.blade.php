@@ -27,7 +27,7 @@
                         <div class="card girar shadow">
                             <div class="card-body text-center">
                                 <div class="material-icons text-danger" style="font-size: 4em;">favorite</div>
-                                <p class="lead">Transformamos amor a profissões em ações grandiosas.</p>
+                                <p class="lead text-capitalize">Transformamos amor a profissões em ações grandiosas.</p>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                         <div class="card girar shadow">
                             <div class="card-body text-center">
                                 <div class="material-icons text-info" style="font-size: 4em;">healing</div>
-                                <p class="lead">Curar Do Corpo Ate A Mente Com Varios Profissionais Qualificados.</p>
+                                <p class="lead text-capitalize">Curar Do Corpo Ate A Mente Com Varios Profissionais Qualificados.</p>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                         <div class="card girar shadow">
                             <div class="card-body text-center">
                                 <div class="material-icons text-success" style="font-size: 4em;">money_off</div>
-                                <p class="lead">Qualidade Em Consultas Objetivas A Preço Acessivel Ao Seu Bolso</p>
+                                <p class="lead text-capitalize">Qualidade Em Consultas Objetivas A Preço Acessivel Ao Seu Bolso</p>
                             </div>
                         </div>
                     </div>

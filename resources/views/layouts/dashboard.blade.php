@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+
+    <link rel="icon" href="{{ asset('img/iconelogo.png') }}">
     
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
@@ -22,8 +24,8 @@
 
         <form action="{{route('logout')}}" method="post" class="ml-auto">
             @csrf
-            <button class="btn btn-outline-light much-rounded px-2">
-              <div class="material-icons float-left">clear</div>
+            <button class="btn btn-outline-light btn-sm px-2">Logout
+              <div class="material-icons float-left">logout</div>
             </button>
         </form>
     </nav>
@@ -35,38 +37,49 @@
                     Usuario:
                     {{Auth::user()->name}}
                   </li>
-                  <!-- <li>
-                      <a href="#submenu2" data-toggle="collapse">
-                        Menu
+                  
+                    <li>
+                      <a href="{{route('dashboard')}}">
+                      <div class="material-icons float-left mr-2">home</div>
+                      Home
                       </a>
-                      <ul class="collapse pl-0" id="submenu2">
-                          <li><a href="#">Paginas</a></li>
-                          <li><a href="#">Item De Menu</a></li>
-                      </ul>
-                  </li> -->
+                    </li>
                   @can('acesso-administrador')
-                    <li class="active"><a href="">Home</a></li>
-                    <li><a href="">link 1 admin</a></li>
-                    <li><a href="">link 2 admin</a></li>
-                    <li><a href="">link 3 admin</a></li>
+                    <li>
+                      <a href="#especialidades" data-toggle="collapse">
+                        <div class="material-icons float-left mr-2">arrow_drop_down</div>
+                        Especialidades
+                      </a>
+
+                      <ul class="collapse pl-0" id="especialidades">
+                          <li>
+                            <a href="{{ route('admin.especialidades.create') }}">
+                              Nova
+                              <div class="material-icons float-left">add</div>
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ route('admin.especialidades.index') }}">
+                              Listar Todas
+                              <div class="material-icons float-left">list</div>
+                            </a>
+                          </li>
+                      </ul>
+                    </li> 
                   @endcan
 
                   @can('acesso-medico')
-                    <li class="active"><a href="">Home</a></li>
                     <li><a href="">link 1 medico</a></li>
                     <li><a href="">link 2 medico</a></li>
                     <li><a href="">link 3 medico</a></li>
                   @endcan
 
                   @can('acesso-secretario')
-                    <li class="active"><a href="">Home</a></li>
-                    <li><a href="">link 1 secretario</a></li>
-                    <li><a href="">link 2 secretario</a></li>
-                    <li><a href="">link 3 secretario</a></li>
+                    <li><a href="{{route('manager.messages.index')}}">Mensagens</a></li>
                   @endcan
 
                   @can('acesso-paciente')
-                    <li class="active"><a href="">Home</a></li>
                     <li><a href="">link 1 paciente</a></li>
                     <li><a href="">link 2 paciente</a></li>
                     <li><a href="">link 3 paciente</a></li>

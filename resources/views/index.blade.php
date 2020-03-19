@@ -265,29 +265,48 @@
                 <h2>Duvidas Frequentes</h2>
 
                 <div>
+                    @if($emptyduvidas)
+                        <div class="alert alert-primary" role="alert">
+                            <strong class="text-danger">Essas Duvidas Serão Adicionadas Pelos Secretarios Em Breve!</strong>
+                        </div>
+                    
+                    @else
+                    @foreach($duvidas as $duvida)
+                    
                     <div class="card">
                         <div class="card-header">
                             <h5 class="mb-0">
-                                <a data-toggle="collapse" href="#p3">
-                                    Quais Formas De Pagamento Vocês Usam
+                                <a data-toggle="collapse" href="#duvida{{ $duvida->id }}">
+                                    {{ $duvida->message }}
                                 </a>
                             </h5>
                         </div>
 
-                        <div id="p3" class="collapse in">
+                        <div id="duvida{{ $duvida->id }}" class="collapse in">
                             <div class="card-body">
-                                <ul>
-                                    <li>Debito</li>
-                                    <li>Credito</li>
-                                    <li>Boleto</li>
-                                    <li>Bitcoin</li>
-                                </ul>
+                                {{ $duvida->resposta }}
                             </div>
                         </div>
                     </div>
+                    
+                    @endforeach
+                    @endif
                 </div>
+
             </div>
         </div>
     </div>
+
+    <section class="container">
+        <div class="card-group">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Emissor: </h2>
+                    <hr>
+                    <p class="lead">depoimento aqui</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
 @endsection

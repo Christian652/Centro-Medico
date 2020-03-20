@@ -6,11 +6,11 @@
 
 @section('content')
 
-<div class="w-100 paralax img-1 mb-3">
+    <div class="w-100 paralax img-1 mb-3">
         <div class="container container-centered">
             <div class="d-none d-md-block">
-                <h1 class="display-3 text-dark text-center">Uma Frase Aqui Sei La</h1>  
-                <p class="lead text-center" style="font-size: 2em;">Aqui FIcaria Um SUbtitulo</p>
+                <h1 class="display-3 text-dark text-center">Clinica Centro Médico</h1>  
+                <p class="lead text-center text-capitalize" style="font-size: 2em;">o melhor atendimento em consultoria</p>
             </div>
         </div>
     </div>
@@ -296,17 +296,33 @@
             </div>
         </div>
     </div>
-
+    
     <section class="container">
-        <div class="card-group">
-            <div class="card">
-                <div class="card-body">
-                    <h2>Emissor: </h2>
-                    <hr>
-                    <p class="lead">depoimento aqui</p>
+    <hr>
+        <h2 class="mb-4">Seção de Depoimentos</h2>
+
+        @if($emptydepoimentos)
+            <div class="alert alert-primary" role="alert">
+                <strong class="text-danger">Esses Depoimentos Serão Adicionados Pelos Secretarios Em Breve!</strong>
+            </div>
+                    
+        @else            
+                    
+        <div class="row">
+            @foreach($depoimentos as $depoimento)
+            <div class="col-4">
+                <div class="card much-rounded mb-4">
+                    <div class="card-body text-center">
+                        <h4>{{$depoimento->nome}}</h4>
+                        <hr>
+                        <p class="lead">{{$depoimento->message}}</p>
+                    </div>
                 </div>
             </div>
+            @endforeach
+
         </div>
+        @endif
     </section>
 
 @endsection

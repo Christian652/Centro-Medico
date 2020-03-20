@@ -23,6 +23,7 @@ Route::name('site.')->group(function(){
     Route::get('/home', 'SiteController@index')->name('home');
     Route::get('/sobre-nos', 'SiteController@sobre')->name('sobre');
     Route::get('/contatos', 'SiteController@contatos')->name('contatos');
+    Route::get('/categoria-de-consulta', 'SiteController@categoriaDeConsulta')->name('categoriaDeConsulta');
 
     Route::resource('Mensagens', 'MessageController', ['except'=>['show', 'create', 'edit', 'update', 'index']])->names('messages')->parameters(["Mensagens"=>'message']);
 

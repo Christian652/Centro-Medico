@@ -10,17 +10,27 @@ class SiteController extends Controller
 {
     public function index()
     {
-        $depoimentos = Message::all(['message', 'nome'])->where('categoryId', 4)->paginate(4);
+        $duvidas = Message::all()->where('respondida', true)->where('permissao_publica', true);
+        $depoimentos = Message::all()->where('categoryId', 4)->where('permissao_publica', true);
 
-        $duvidas = Message::all(['message', 'resposta'])->where('permissao_publica', true);
-
-        if(Message::where('permissao_publica', true)->sum('id') > 0 && Message::where('respondida', true)->sum('id') > 0) {
+        if(Message::where('permissao_publica', true)->where('respondida', true)->sum('id') > 0) {
             $emptyduvidas = false;
         } else {
             $emptyduvidas = true;
         }
 
-        return view('index', ['duvidas'=>$duvidas, 'emptyduvidas'=>$emptyduvidas]);
+        if(Message::where('categoryId', 4)->where('permissao_publica', true)->sum('id') > 0) {
+            $emptydepoimentos = false;
+        } else {
+            $emptydepoimentos = true;
+        }
+
+        return view('index', [
+            'duvidas'=>$duvidas, 
+            'emptyduvidas'=>$emptyduvidas, 
+            'emptydepoimentos'=>$emptydepoimentos, 
+            'depoimentos'=>$depoimentos
+        ]);
     }
 
     public function sobre()
@@ -33,5 +43,10 @@ class SiteController extends Controller
         $messageCategories = MessageCategory::all();
 
         return view('contatos', ['messageCategories'=>$messageCategories]);
+    }
+
+    public function categoriaDeConsulta()
+    {
+        return view('categoriaDeConsulta');
     }
 }

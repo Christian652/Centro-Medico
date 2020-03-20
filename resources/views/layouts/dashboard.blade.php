@@ -76,7 +76,12 @@
                   @endcan
 
                   @can('acesso-secretario')
-                    <li><a href="{{route('manager.messages.index')}}">Mensagens</a></li>
+                    <li>
+                      <a href="{{route('manager.messages.index')}}">
+                      <div class="material-icons float-left mr-2">message</div>
+                      Mensagens
+                      </a>
+                    </li>
                   @endcan
 
                   @can('acesso-paciente')

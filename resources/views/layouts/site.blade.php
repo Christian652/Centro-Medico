@@ -52,7 +52,7 @@
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Serviços</a>
                         
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Fisioterapia</a>
+                            <a class="dropdown-item" href="{{ route('site.categoriaDeConsulta') }}">Fisioterapia</a>
                             <a class="dropdown-item" href="#">Oculista</a>
                             <a class="dropdown-item" href="#">Cardiologia</a>
                             <a class="dropdown-item" href="#">Clinico Geral</a>
@@ -69,7 +69,7 @@
 
     <footer class="container-fluid bg-dark p-3 text-white">
         <div class="container">
-            <div class="row">
+            <div class="row lead" style="font-size: 1.2em;">
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     Redes Sociais
                     <ul>
@@ -90,15 +90,18 @@
 
                 <div class="col-sm-12 col-md-6 col-lg-4">
                     Ideais
-                    <ul>
-                        <li>Alegria</li>
-                        <li>e</li>
-                        <li>Ousadia</li>
+                    <ul class="list-unstyled">
+                        <li>Amor <div class="material-icons float-left mr-2 text-danger">favorite</div></li>
+                        <li>Cuidado <div class="material-icons float-left mr-2 text-info">healing</div></li>
+                        <li>Ousadia <div class="material-icons float-left mr-2 text-success">verified_user</div></li>
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>    
     </footer>
+    <div class="container-fluid bg-info p-1 text-center text-white">
+        Equipe Centro Medico &copy - {{ date('Y') }}
+    </div>
     
     <div class="modal fade" id="modalLogin" role="dialog">
         <div class="modal-dialog" role="document">
@@ -116,11 +119,11 @@
                         <form action="{{route('login')}}" method="post" class="mb-2">
                             @csrf
                             <div class="form-group">
-                                <input type="text" name="email" placeholder="Email" class="form-control much-rounded form-control-lg">
+                                <input type="email" name="email" required placeholder="Email" class="form-control much-rounded form-control-lg">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="password" placeholder="Password" class="form-control much-rounded form-control-lg">
+                                <input type="text" name="password" required placeholder="Password" class="form-control much-rounded form-control-lg">
                             </div>
 
                             <button class="btn btn-primary much-rounded px-3">Login</button>
@@ -133,19 +136,19 @@
                             <form action="{{route('register')}}" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" name="name" placeholder="Digite Aqui Seu Nome" class="much-rounded form-control form-control-lg">
+                                    <input type="text" required name="name" placeholder="Digite Aqui Seu Nome" class="much-rounded form-control form-control-lg">
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" name="email" placeholder="Digite Aqui O Email A Cadastrar" class="much-rounded form-control form-control-lg">
+                                    <input type="email" required name="email" placeholder="Digite Aqui O Email A Cadastrar" class="much-rounded form-control form-control-lg">
                                 </div>
                                 
                                 <div class="form-group">
-                                    <input type="text" name="password" placeholder="Digite Aqui A Senha A Cadastrar" class="much-rounded form-control form-control-lg">
+                                    <input type="text" required name="password" placeholder="Digite Aqui A Senha A Cadastrar" class="much-rounded form-control form-control-lg">
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="" placeholder="Confirme A Senha" class="much-rounded form-control form-control-lg" name="password_confirmation" required>
+                                    <input type="text" required placeholder="Confirme A Senha" class="much-rounded form-control form-control-lg" name="password_confirmation" required>
                                 </div>
 
                                 <button class="btn btn-info much-rounded">Registrar</button>

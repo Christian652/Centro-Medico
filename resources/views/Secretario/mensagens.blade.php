@@ -15,24 +15,7 @@
                         <div class="card-header">
                             <div class="d-flex justify-content-between">
                                 <p class="lead p-0 m-0">{{$message->category()->first()->nome}}</p>
-                            
-                                <!-- <div class="dropdown open">
-                                  <button class="btn rounded-circle dropdown-toggle" data-toggle="dropdown">
-                                    <div class="material-icons float-left">menu</div>
-                                  </button>
-
-                                  <ul class="dropdown-menu">
-                                    <li class="dropdown-item">
-                                      <form action="{{ route('manager.messages.destroy', ['message'=>$message]) }}" method="post">
-                                          @csrf
-                                          {{method_field('DELETE')}}
-                                          <button class="btn btn-danger rounded-circle px-2">
-                                              <div class="material-icons float-left">delete</div>
-                                          </button>
-                                      </form>
-                                    </li>
-                                  </ul>
-                                </div> -->
+                  
 
                                 <div class="d-flex">
                                   <form action="{{ route('manager.messages.destroy', ['message'=>$message]) }}" method="post">
@@ -43,12 +26,14 @@
                                     </button>
                                   </form>
 
+                                  <!-- PERMISSOES PUBLICAS E PRIVADAS PARA DUVIDAS -->
                                   @if($message->category()->first()->nome == "Duvida" && $message->permissao_publica !== 1 && !empty($message->resposta))
                                   <form action="{{ route('manager.messages.bepublic', ['message'=>$message]) }}" method="post">
                                     @csrf
                                     {{method_field('PUT')}}
-                                    <button class="btn btn-success rounded-circle px-2">
+                                    <button class="btn btn-success px-2">
                                       <div class="material-icons float-left">lock_open</div>
+                                      Tornar Publico
                                     </button>
                                   </form>
                                   @endif
@@ -57,8 +42,33 @@
                                   <form action="{{ route('manager.messages.beprivate', ['message'=>$message]) }}" method="post">
                                     @csrf
                                     {{method_field('PUT')}}
-                                    <button class="btn btn-warning rounded-circle px-2">
+                                    <button class="btn btn-warning px-2">
                                       <div class="material-icons float-left">lock</div>
+                                      Tornar Privado
+                                    </button>
+                                  </form>
+                                  @endif
+
+                                  <!-- PERMISSOES PUBLICAS E PRIVADAS PARA DEPOIMENTOS -->
+
+                                  @if($message->category()->first()->nome == "Depoimento" && $message->permissao_publica !== 1)
+                                  <form action="{{ route('manager.messages.bepublic', ['message'=>$message]) }}" method="post">
+                                    @csrf
+                                    {{method_field('PUT')}}
+                                    <button class="btn btn-success px-2">
+                                      <div class="material-icons float-left">lock_open</div>
+                                      Tornar Publico
+                                    </button>
+                                  </form>
+                                  @endif
+
+                                  @if($message->category()->first()->nome == "Depoimento" && $message->permissao_publica == 1)
+                                  <form action="{{ route('manager.messages.beprivate', ['message'=>$message]) }}" method="post">
+                                    @csrf
+                                    {{method_field('PUT')}}
+                                    <button class="btn btn-warning px-2">
+                                      <div class="material-icons float-left">lock</div>
+                                      Tornar Privado
                                     </button>
                                   </form>
                                   @endif

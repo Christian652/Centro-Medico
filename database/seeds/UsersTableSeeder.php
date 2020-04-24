@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
         $adminRole = Role::where('nome', 'Administrador')->first();
         $secretariaRole = Role::where('nome', 'Secretario')->first();
         $medicoRole = Role::where('nome', 'Medico')->first(); 
+        $pacienteRole = Role::where('nome', 'Paciente')->first(); 
 
         $admin = User::create([
             'name'=>'Christian',
@@ -40,8 +41,15 @@ class UsersTableSeeder extends Seeder
             'password'=>Hash::make('guitarra652')
         ]);
 
+        $paciente = User::create([
+            'name'=>'maelson',
+            'email'=>'maelson@gmail.com',
+            'password'=>Hash::make('guitarra652')
+        ]); 
+
         $admin->roles()->attach($adminRole);
         $secretaria->roles()->attach($secretariaRole);
         $medico->roles()->attach($medicoRole);
+        $paciente->roles()->attach($pacienteRole);
     }
 }

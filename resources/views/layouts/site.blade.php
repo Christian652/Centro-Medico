@@ -52,12 +52,9 @@
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Serviços</a>
                         
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ route('site.categoriaDeConsulta') }}">Fisioterapia</a>
-                            <a class="dropdown-item" href="#">Oculista</a>
-                            <a class="dropdown-item" href="#">Cardiologia</a>
-                            <a class="dropdown-item" href="#">Clinico Geral</a>
-                            <a class="dropdown-item" href="#">Otorrinolaringologia</a>
-                            <a class="dropdown-item" href="#">Dermatologista</a>
+                            @foreach($especialidades as $especialidade)
+                            <a class="dropdown-item" href="{{ route('site.categoriaDeConsulta', ['especialidade'=>$especialidade->id]) }}">{{ $especialidade->nome }}</a>
+                            @endforeach
                         </div>
                     </li>
                 </ul>
@@ -93,7 +90,7 @@
                     <ul class="list-unstyled">
                         <li>Amor <div class="material-icons float-left mr-2 text-danger">favorite</div></li>
                         <li>Cuidado <div class="material-icons float-left mr-2 text-info">healing</div></li>
-                        <li>Ousadia <div class="material-icons float-left mr-2 text-success">verified_user</div></li>
+                        <li>Honestidade <div class="material-icons float-left mr-2 text-success">verified_user</div></li>
                     </ul>
                 </div>
             </div>

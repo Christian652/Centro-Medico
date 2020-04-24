@@ -14,8 +14,8 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::all();
-
+        $messages = Message::paginate(5);
+        
         return view('Secretario.mensagens', ['messages'=>$messages]);
     }
 

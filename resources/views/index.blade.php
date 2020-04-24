@@ -250,10 +250,9 @@
             <div class="col-sm-12 col-lg-4">
                 <h2 class="">Estrutura Da Clinica</h2>
 
-                <p class="lead">
-                    <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id ratione deleniti quis culpa, impedit quas, minus cum, non alias ipsum beatae! Doloremque, dolore quam vero blanditiis tempora quas ullam soluta?</span>
-                    <span>Officiis facere, excepturi eum eligendi ducimus maiores nesciunt itaque ex quis corporis explicabo assumenda maxime reiciendis odio dolorem. Sequi aspernatur nihil necessitatibus dignissimos ullam laborum quae quo commodi expedita adipisci.</span>
-                    <span>iquid dolorum quo reprehenderit quam quasi. Eligendi nobis, sit repellat minima dicta non optio est harum, eaque ipsa laudantium dolorem! Doloribus reprehenderit itaque non.</span>
+                <p class="lead text-capitalize">
+                Nossa estrutura foi planejada para proporcionar o melhor para você! Com muito conforto e modernidade, nossos espaços têm uma qualidade única, desde a recepção até o consultório médico, tudo foi pensado para o seu bem-estar. Pois desejamos que você tenha uma experiência única e satisfatória. 
+Contamos com recepção, consultórios médicos e salas de terapia climatizados para sua maior comodidade. Pois sua satisfação é o nosso maior objetivo!
                 </p>
             </div>
         </div>

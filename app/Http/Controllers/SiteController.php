@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Especialidade;
 use App\Message;
 use App\MessageCategory;
 use Illuminate\Http\Request;
@@ -25,28 +26,36 @@ class SiteController extends Controller
             $emptydepoimentos = true;
         }
 
+        $especialidades = Especialidade::all();
+
         return view('index', [
             'duvidas'=>$duvidas, 
             'emptyduvidas'=>$emptyduvidas, 
             'emptydepoimentos'=>$emptydepoimentos, 
-            'depoimentos'=>$depoimentos
+            'depoimentos'=>$depoimentos,
+            'especialidades'=>$especialidades
         ]);
     }
 
     public function sobre()
     {
-        return view('sobre');
+        $especialidades = Especialidade::all();
+
+        return view('sobre', ['especialidades'=>$especialidades]);
     }
 
     public function contatos()
     {
         $messageCategories = MessageCategory::all();
+        $especialidades = Especialidade::all();
 
-        return view('contatos', ['messageCategories'=>$messageCategories]);
+        return view('contatos', ['messageCategories'=>$messageCategories, 'especialidades'=>$especialidades]);
     }
 
-    public function categoriaDeConsulta()
+    public function categoriaDeConsulta(Especialidade $especialidade)
     {
-        return view('categoriaDeConsulta');
+        $especialidades = Especialidade::all();
+
+        return view('categoriaDeConsulta', ['especialidades'=>$especialidades, 'especialidade'=>$especialidade]);
     }
 }

@@ -5,21 +5,23 @@
 @endsection
 
 @section('content')
-    <div class="container my-5">
+    <div class="container my-2">
+        <h1 class="display-3">{{ $especialidade->nome }}</h1>
+        <hr>
         <div class="row">
-            <div class="col-6">
-                <img src="{{ asset('img/fisio.jpg') }}" alt="" class="w-100 rounded shadow-sm">
+            <div class="col-sm-12 col-lg-6">
+                <!-- <img src="http://localhost/Consultorio/storage/app/public/especialidadeImgs/{{ $especialidade->foto }}" class="w-100 rounded shadow-sm"> -->
+                <img src="{{ asset('storage/especialidadeImgs') }}" alt="" class="w-100 rounded shadow-sm">
             </div>
 
-            <div class="col-6">
-                <h2>Sobre A Area</h2>
+            <div class="col-sm-12 col-lg-6">
+            @foreach($especialidade->posts()->get() as $post)
+                <h2>{{ $post->titulo }}</h2>
 
-                <p class="lead mb-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. At saepe cumque quam fugit aliquam, voluptatum assumenda enim! Exercitationem distinctio fugiat, id maxime ipsam dignissimos incidunt! Accusantium nesciunt voluptas quae repellendus.</p>
-
-                <h2>Nossos Serviços Da Area</h2>
-
-                <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia fugiat cupiditate, expedita quaerat, alias blanditiis reprehenderit beatae iusto aut delectus vitae quia fugit animi quam. Delectus veniam quam aperiam! Ex?</p>
+                <p class="lead mb-3">{{ $post->conteudo }}</p>
+            @endforeach
             </div>
         </div>
+        <hr>
     </div>
 @endsection

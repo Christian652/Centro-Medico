@@ -16,7 +16,15 @@ class EspecialidadeController extends Controller
     {
         $especialidades = Especialidade::all();
 
-        return view('Administrador.indexEspecialidade', ['especialidades'=>$especialidades]);
+        return view('Administrador.especialidades.index', ['especialidades'=>$especialidades]);
+    }
+
+    public function show(Especialidade $especialidade) {
+        if (isset($especialidade->id) && $especialidade->id > 0) {
+            return view('Administrador.especialidades.show', ['especialidade'=>$especialidade]);
+        }
+
+        return redirect()->route('admin.especialidades.index');
     }
 
     /**
@@ -26,7 +34,7 @@ class EspecialidadeController extends Controller
      */
     public function create()
     {
-        return view('Administrador.createEspecialidade');
+        return view('Administrador.especialidades.create');
     }
 
     /**
@@ -38,7 +46,7 @@ class EspecialidadeController extends Controller
     public function store(Request $request)
     {
         if ($request->foto->isValid()) {
-            $nameFile = $request->nome . '.' . $request->foto->extension();
+            $nameFile = $request->nome . date('dmy') . '.' . $request->foto->extension();
 
             $foto = $request->foto->storeAs('especialidadeImgs', $nameFile);
             
@@ -60,7 +68,7 @@ class EspecialidadeController extends Controller
      */
     public function edit(Especialidade $especialidade)
     {
-        return view('Administrador.editEspecialidade', ['especialidade'=>$especialidade]);
+        return view('Administrador.especialidades.edit', ['especialidade'=>$especialidade]);
     }
 
     /**
@@ -72,8 +80,19 @@ class EspecialidadeController extends Controller
      */
     public function update(Request $request, Especialidade $especialidade)
     {
-        // $especialidade->nome = $request->nome;
+        if (!empty($request->nome) && strlen($request->nome) <= 255) {
+            $especialidade->nome = $request->nome;
+
+            if ($request->foto->isValid()) {
+                $nameFile = $request->nome. date('dmy') . '.' . $request->foto->extension();
+    
+                $foto = $request->foto->storeAs('especialidadeImgs', $nameFile);
+            }
+
+            $especialidade->save();
+        }
         
+        return redirect()->route('admin.especialidades.index');
     }
 
     /**

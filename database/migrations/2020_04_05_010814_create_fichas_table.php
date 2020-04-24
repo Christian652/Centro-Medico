@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEspecialidadesTable extends Migration
+class CreateFichasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateEspecialidadesTable extends Migration
      */
     public function up()
     {
-        Schema::create('especialidades', function (Blueprint $table) {
+        Schema::create('fichas', function (Blueprint $table) {
             $table->id();
-            $table->string('nome')->unique();
-            $table->string('foto')->unique();
-            $table->string('descricao')->unique();
+            $table->unsignedBigInteger('especialidade_id');
+            $table->date('data');
+            $table->time('horarioInicial');
+            $table->integer('disponiveis')->default(0);
         });
     }
 
@@ -28,6 +29,6 @@ class CreateEspecialidadesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('especialidades');
+        Schema::dropIfExists('fichas');
     }
 }

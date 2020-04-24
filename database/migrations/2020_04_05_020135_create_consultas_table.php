@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEspecialidadesTable extends Migration
+class CreateConsultasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateEspecialidadesTable extends Migration
      */
     public function up()
     {
-        Schema::create('especialidades', function (Blueprint $table) {
+        Schema::create('consultas', function (Blueprint $table) {
             $table->id();
-            $table->string('nome')->unique();
-            $table->string('foto')->unique();
-            $table->string('descricao')->unique();
+            $table->unsignedBigInteger('paciente_id');
+            $table->unsignedBigInteger('ficha_id');
+            $table->boolean('confirmada');
+            $table->enum('opcaoDeAtendimento', ['Sus', 'Particular']);
         });
     }
 
@@ -28,6 +29,6 @@ class CreateEspecialidadesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('especialidades');
+        Schema::dropIfExists('consultas');
     }
 }

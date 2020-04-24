@@ -109,6 +109,11 @@
                       </div>
                     @endforeach    
                     </div>
+
+                  </div>
+
+                  <div class="row justify-content-center">
+                    {{ $messages }}
                   </div>
                 </div>
 @endsection

@@ -7,9 +7,11 @@
 @section('content')
 
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <table class="table">
+        <h1 class="display-4 text-center" style="font-size: 2.8em;">Especialidades De Consultas Da Clinica</h1>
+        <hr>
+        <div class="row justify-content-center">
+            <div>
+                <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -24,17 +26,19 @@
                             <td>{{ $especialidade->id }}</td>
                             <td>{{ $especialidade->nome }}</td>
                             <td>
-                                <img src="http://localhost/Consultorio/public/storage/especialidadeImgs/{{ $especialidade->foto }}" alt="" class="w-25">
+                                <img src="http://localhost/Consultorio/storage/app/public/especialidadeImgs/{{ $especialidade->foto }}" alt="" class="w-25">
                             </td>
                             <td>
                                 <div class="d-flex">
                                     <a href="{{ route('admin.especialidades.edit', ['especialidade'=>$especialidade]) }}" class="btn btn-success">Update</a>
 
-                                    <form action="{{ route('admin.especialidades.destroy', ['especialidade'=>$especialidade]) }}" method="post">
+                                    <form action="{{ route('admin.especialidades.destroy', ['especialidade'=>$especialidade->id]) }}" method="post">
                                         @csrf
                                         {{ method_field('DELETE') }}
                                         <button class="btn btn-danger">Delete</button>
                                     </form>
+
+                                    <a href="{{ route('admin.especialidades.show', ['especialidade'=>$especialidade]) }}" class="btn btn-info">Posts</a>
                                 </div>    
                             </td>
                         </tr>
